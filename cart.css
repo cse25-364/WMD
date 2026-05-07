@@ -1,0 +1,92 @@
+/* GENERAL PAGE STYLING */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  margin: 20px;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  color: teal;
+}
+
+h2{
+    text-align: center;
+}
+
+#back{
+    float: right;
+}
+
+/* PRODUCT SECTION */
+.products {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* INDIVIDUAL PRODUCT CARD */
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* PRODUCT IMAGE */
+.product img {
+  width: 120px;
+}
+
+/* BUTTON STYLE */
+button {
+  background: teal;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* CART ITEM */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  margin: 10px auto;
+  padding: 10px;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+/* CART IMAGE */
+.cart-item img {
+  width: 60px;
+}
+
+/* SUMMARY SECTION */
+.summary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 
+   CHECKOUT BUTTON STYLING
+ */
+
+#checkout-btn{
+    padding: 15px 25px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 31%;
+}
+
+#checkout-btn:hover{
+    background: #256;
+}
