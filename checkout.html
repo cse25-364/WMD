@@ -1,0 +1,332 @@
+<!--checkout.html
+    Checkout Page With Cart-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout Page</title>
+
+    <style>
+
+        /*PAGE STYLING*/
+
+        body{
+            font-family: Arial, sans-serif;
+            background: rgb(58, 128, 166);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main checkout container */
+        .checkout-container{
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Section spacing */
+        .section{
+            margin-bottom: 25px;
+        }
+
+        .section h2{
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Input fields */
+        input{
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Cart item styling */
+        .cart-item{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Summary box */
+        .summary{
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .summary p{
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+        }
+
+        /* Checkout button */
+        button{
+            width: 100%;
+            padding: 15px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #333;
+        }
+
+        /* Message styling */
+        #message{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!--CHECKOUT CONTAINER-->
+
+    <div class="checkout-container">
+
+        <h1>Checkout</h1>
+
+        <!--CUSTOMER INFORMATION-->
+
+        <div class="section">
+
+            <h2>Customer Information</h2>
+
+            <input type="text" id="name" placeholder="Enter Full Name">
+
+            <input type="email" id="email" placeholder="Enter Email Address">
+
+            <input type="text" id="address" placeholder="Enter Delivery Address">
+
+        </div>
+
+        <!--PAYMENT DETAILS-->
+
+        <div class="section">
+
+            <h2>Payment Details</h2>
+
+            <input type="text" id="card" placeholder="Enter Card Number">
+
+            <input type="text" id="expiry" placeholder="MM/YY">
+
+            <input type="text" id="cvv" placeholder="CVV">
+
+        </div>
+
+        <!-- CART ITEMS SECTION-->
+
+        <div class="section">
+
+            <h2>Cart Items</h2>
+
+            <!-- Cart items will appear here -->
+            <div id="cart-items"></div>
+
+        </div>
+
+        <!--ORDER SUMMARY-->
+
+        <div class="section summary">
+
+            <h2>Order Summary</h2>
+
+            <p>
+                <span>Subtotal:</span>
+                <span id="subtotal">P0</span>
+            </p>
+
+            <p>
+                <span>VAT (14%):</span>
+                <span id="vat">P0</span>
+            </p>
+
+            <p>
+                <strong>Total:</strong>
+                <strong id="total">P0</strong>
+            </p>
+
+        </div>
+
+        <!--PLACE ORDER BUTTON-->
+
+        <button onclick="placeOrder()">
+            Place Order
+        </button>
+
+        <!-- Success/Error Message -->
+        <div id="message"></div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT SECTION
+    ========================= -->
+
+    <script>
+
+        // GET CART FROM LOCALSTORAGE
+
+        // Convert cart data from JSON string into JavaScript array
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Get HTML elements
+        let cartItemsContainer = document.getElementById("cart-items");
+
+        let subtotalElement = document.getElementById("subtotal");
+
+        let vatElement = document.getElementById("vat");
+
+        let totalElement = document.getElementById("total");
+
+        // Variable to store subtotal
+        let subtotal = 0;
+
+        // DISPLAY CART ITEMS
+        function displayCart(){
+
+            // Clear container before displaying items
+            cartItemsContainer.innerHTML = "";
+
+            // Reset subtotal
+            subtotal = 0;
+
+            // Loop through all cart items
+            cart.forEach(function(item){
+
+                // Add item price to subtotal
+                subtotal += item.price;
+
+                // Create cart item div
+                let div = document.createElement("div");
+
+                div.classList.add("cart-item");
+
+                // Display item information
+                div.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>P${item.price}</span>
+                `;
+
+                // Add item to page
+                cartItemsContainer.appendChild(div);
+
+            });
+            // CALCULATE VAT & TOTAL
+
+            let vat = subtotal * 0.14;
+
+            let total = subtotal + vat;
+
+            // Display values
+            subtotalElement.innerHTML = "P" + subtotal.toFixed(2);
+
+            vatElement.innerHTML = "P" + vat.toFixed(2);
+
+            totalElement.innerHTML = "P" + total.toFixed(2);
+
+        }
+
+        // Run function immediately
+        displayCart();
+
+        // PLACE ORDER FUNCTION
+
+        function placeOrder(){
+
+            // Get form values
+            let name = document.getElementById("name").value;
+
+            let email = document.getElementById("email").value;
+
+            let address = document.getElementById("address").value;
+
+            let card = document.getElementById("card").value;
+
+            let expiry = document.getElementById("expiry").value;
+
+            let cvv = document.getElementById("cvv").value;
+
+            // Message area
+            let message = document.getElementById("message");
+
+            // VALIDATION
+            // Check empty fields
+            if(
+                name === "" ||
+                email === "" ||
+                address === "" ||
+                card === "" ||
+                expiry === "" ||
+                cvv === ""
+            ){
+
+                message.style.color = "red";
+
+                message.innerHTML = "Please fill in all fields.";
+
+                return;
+            }
+
+            // Check if cart is empty
+            if(cart.length === 0){
+
+                message.style.color = "red";
+
+                message.innerHTML = "Your cart is empty.";
+
+                return;
+            }
+
+            // SUCCESS MESSAGE
+
+            message.style.color = "green";
+
+            message.innerHTML = "Order placed successfully!";
+
+            // CLEAR CART
+
+            // Remove cart from localStorage
+            localStorage.removeItem("cart");
+
+            // Empty cart array
+            cart = [];
+
+            // Refresh displayed cart
+            displayCart();
+
+        }
+
+    </script>
+
+</body>
+</html>
