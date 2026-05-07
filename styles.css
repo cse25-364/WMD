@@ -1,0 +1,106 @@
+.header{
+    height: 200px; 
+    background-color: white;
+    color: rgb(218, 6, 6);
+    width: 100%;
+}
+.header p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+    font-weight: 100;
+    padding-top: 6%;
+    
+}
+.nav{
+    background-color: blanchedalmond;
+    color: rgb(226, 43, 43);
+    overflow: hidden;
+}
+
+.nav ul{
+    list-style-type: none;
+}
+.nav ul li{
+    display: inline;
+    
+    padding-left: 155px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: light;
+    text-transform: lowercase;
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: brown;
+}
+.nav ul li a:active{ /* for when the link is active*/
+    text-decoration: dotted;
+    font-weight: bold;
+    background-color: teal;
+
+}
+
+.nav ul li a:hover{/* for when the link is hovered over by the mouse*/
+    background-color: white;
+
+}
+
+/*.content{
+    background-color: teal;
+}
+*/
+
+
+.row p {
+  font-family: Georgia, serif;
+  font-size: large;
+
+}
+
+.d-block w-100{
+    display: block;
+    margin-left: auto;
+    margin-right: 50px;
+    width: 50%;
+}
+
+.slider{
+    max-width: 500px;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    height: 100vh;  
+}
+
+.slider p{
+    color: black; /* displays the all the paragraphs in the slider block to be black */
+}
+
+.col {
+    padding-top: 40px;
+    margin-right: 10px; /* this controls how much space is between the side of the computer and the content */
+    margin-left: 10px;
+}
+
+.logo-img{
+  float: left;        /* Can be 'left' or 'right' */
+  margin-right: 1%; /* Keeps the text from touching the image */
+  width: 150px;
+  text-align: justify;
+  vertical-align: middle;
+}
+
+.container {
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     max-width: 1100px;
+    margin: auto; /* used to centre the content flexibly, as well as "max" above.*/
+}
+
+.content{
+    margin-right: 2%;
+    margin-left: 2%; /* used to centre the content flexibly*/
+}
+
+
