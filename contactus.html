@@ -75,14 +75,52 @@
         
          <div class="col">
 
-            <p>Fill in the form to send a direct message:</p>
+           <!-- Contact Form Section -->
+<p>Engage with us, fill in the form to send a direct message:</p>
 
-            <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-            </form>
+<form id="feedbackForm"
+      action="mailto:sibongile.kgengwenyane@gmail.com"
+      method="POST"
+      enctype="text/plain">
+
+    <!-- Name Input -->
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name"
+    placeholder="Your Name" required><br><br>
+
+    <!-- Email Input -->
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email"
+    placeholder="Your Email" required><br><br>
+
+    <!-- Feedback Message -->
+    <label for="message">Your Feedback:</label><br>
+    <textarea id="message" name="message"
+    placeholder="Your Message" required></textarea><br><br>
+
+    <!-- Submit Button -->
+    <button type="submit">Send Message</button>
+
+</form>
+
+<!-- Success Message Script -->
+<script>
+    // Gets the form element
+    const form = document.getElementById("feedbackForm");
+
+    // Runs when form is submitted
+    form.addEventListener("submit", function(event) {
+
+        // Prevents page refresh
+        event.preventDefault();
+
+        // Popup message
+        alert("Thank you! Your feedback has been submitted.");
+
+        // Clears the form after submission
+        form.reset();
+    });
+</script>
 
 
          </div>
